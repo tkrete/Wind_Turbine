@@ -49,7 +49,7 @@ n = 1;
 for i = 0:time_step:time_end
     n = n+1;
     f(n,1) = i;
-    f(n,2) = (omega(n,2))./(2*pi);                                          %frequency (Hz)
+    f(n,2) = (omega(n,2))./(2*pi);                                                   %frequency (Hz)
 end
 
 %% for loop centripetal force 0->4V
