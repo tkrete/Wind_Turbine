@@ -49,7 +49,7 @@ n = 1;
 for i = 0:time_step:time_end
     n = n+1;
     f(n,1) = i;
-    f(n,2) = (omega(n,2))./(2*pi);                                                   %frequency (Hz)
+    f(n,2) = (omega(n,2))./(2*pi);                                          %frequency (Hz)
 end
 
 %% for loop centripetal force 0->4V
@@ -72,28 +72,54 @@ end
 
 X_omega(:,1) = (Fc_omega(:,1)./k)./(((1 - (Range_omega(:,1)./omega_n).^2).^2 + (2 * zeta * (Range_omega(:,1)./omega_n)).^2).^0.5);       %formula for excitation from dynamics book
 
+
+
+
+
+
+
+
+
+
+
+
+
 %% plots
-figure(1);
-yyaxis left
-plot (X(:,1),X(:,3))
-xlabel('Time (s)')
-ylabel('Lateral displacement (m)')
-
-yyaxis right
-plot(omega(:,1), omega(:,2))
-xlabel('Time (s)')
-ylabel('Angular velocity \omega (rad/s)')
-title('Lateral displacement and angular velocity at 4.5V')
-
-figure(2);
-plot(theta(:,1), theta(:,2))
-xlabel('Time (s)')
-ylabel('Angle \theta (rad)')
-title('Angle of the propeller at 4.5V')
+ figure(1);
+ yyaxis left
+ plot (X(:,1),X(:,3))
+ xlabel('Time (s)')
+ ylabel('Amplitude (m)')
+ title('Distance from equilibrium over time')
+ 
+ yyaxis right
+ plot(omega(:,1), omega(:,2))
+ xlabel('Time (s)')
+ ylabel('Angular velocity \omega of the propeller (rad/s)')
+ title('Angular velocity over time')
+ 
+ figure(2);
+ plot(theta(:,1), theta(:,2))
+ xlabel('Time (s)')
+ ylabel('Angle theta of the propeller (rad)')
+ title('Angle of the propeller over time')
 
 figure(3);
+steps = 349/2300;
+angular_velocity= [0:steps:349];
+hAX=axes;                 % first axes, save handle
+pos=get(hAX,'position')   % get the position vector
+pos = [ 0.1300    0.1100    0.7750    0.8150];
+pos1=pos(2);              % save the original bottom position
+pos(2)=pos(2)+pos1; pos(4)=pos(4)-pos1;  % raise bottom/reduce height->same overall upper position
+set(hAX,'position',pos)   % and resize first axes
+pos(2)=pos1; pos(4)=0.01; % reset bottom to original and small height
 plot(Range_U(:,1), X_omega(:,1))
-xlabel('Supplied voltage [V]')
-ylabel('Displacement of system [m]')
-title('Amplitude')
-grid on
+title('Displacement of the top of the system')
+
+hAX(2)=axes('position',pos,'color','none');  % and create the second
+plot(angular_velocity, 0)
+ylabel(hAX(1),'Displacement of system [m]')
+xlabel(hAX(1),'Supplied voltage [V]')
+xlabel(hAX(2),'Angular velocity [rad/s]')
+set(hAX(2),'xcolor','r','ycolor','r')
