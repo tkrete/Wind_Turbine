@@ -19,17 +19,17 @@ Measuring_Time = 1;
 Length_Signal = Sampling_Rate * Measuring_Time;
 n=1;
 for i=2:2:size(Voltage_exp,2)
-Data_raw2(:,n) = [Voltage_exp(:,i)];                                          %only consider the non-sample columns and put it in a table
+Data_raw2(:,n) = [Voltage_exp(:,i)];                                             %only consider the non-sample columns and put it in a table
 
-Mean(:,n)  = mean(Data_raw2(:,n));                                            %calculate mean of signal in order to compensate for translation on y-axis
+Mean(:,n)  = mean(Data_raw2(:,n));                                           %calculate mean of signal in order to compensate for translation on y-axis
 Data_02(:,n) = Data_raw2(:,n) - Mean(:,n);                                    %calculate the difference between mean and the data
 B2(:,n) = fft(Data_02(:,n));                                                  %FFT to determine how many points we need to consider for the maximum based on frequency of signal
-max_f(:,n)= max(abs(B2(:,n)));                                                %find the frecuency of the system at every voltage
-amount_peaks(:,n)= uint64(max_f(:,n).*Sampling_Rate*10^-3*2);                 %calculate the integer of the ammount of peaks 
+max_f(:,n)= max(abs(B2(:,n)));                                               %find the frecuency of the system at every voltage
+amount_peaks(:,n)= uint64(max_f(:,n).*Sampling_Rate*10^-3*2);              %calculate the integer of the ammount of peaks 
 %integer_peaks(:,n)= uint64(ammount_peaks(:,n));
-sort_data(:,n)= sort(abs(Data_02(:,n)),'desc');                               %sort the data so the top ammount of peaks are listed at the top of the table
-high_peaks{n}(:,:)= sort_data(1:amount_peaks(:,n),n);                         %only take the highest peaks to analyse
-mean_high_peaks(:,n)= mean(high_peaks{n}(:,:));                               %calcultate the mean of the highest peaks
+sort_data(:,n)= sort(abs(Data_02(:,n)),'desc');                              %sort the data so the top ammount of peaks are listed at the top of the table
+high_peaks{n}(:,:)= sort_data(1:amount_peaks(:,n),n);                      %only take the highest peaks to analyse
+mean_high_peaks(:,n)= mean(high_peaks{n}(:,:));                             %calcultate the mean of the highest peaks
 
 Intensities_exp(:,n) = (mean_high_peaks(:,n).*104./10); %.*10e-3
 
@@ -43,17 +43,17 @@ Measuring_Time = 1;
 Length_Signal = Sampling_Rate * Measuring_Time;
 n=1;
 for i=2:2:size(Voltage_exp2,2)
-Data_raw2(:,n) = [Voltage_exp2(:,i)];                                         %only consider the non-sample columns and put it in a table
+Data_raw2(:,n) = [Voltage_exp2(:,i)];                                             %only consider the non-sample columns and put it in a table
 
-Mean(:,n)  = mean(Data_raw2(:,n));                                            %calculate mean of signal in order to compensate for translation on y-axis
+Mean(:,n)  = mean(Data_raw2(:,n));                                           %calculate mean of signal in order to compensate for translation on y-axis
 Data_02(:,n) = Data_raw2(:,n) - Mean(:,n);                                    %calculate the difference between mean and the data
 B2(:,n) = fft(Data_02(:,n));                                                  %FFT to determine how many points we need to consider for the maximum based on frequency of signal
-max_f(:,n)= max(abs(B2(:,n)));                                                %find the frecuency of the system at every voltage
-amount_peaks(:,n)= uint64(max_f(:,n).*Sampling_Rate*10^-3*2);                 %calculate the integer of the ammount of peaks 
+max_f(:,n)= max(abs(B2(:,n)));                                               %find the frecuency of the system at every voltage
+amount_peaks(:,n)= uint64(max_f(:,n).*Sampling_Rate*10^-3*2);              %calculate the integer of the ammount of peaks 
 %integer_peaks(:,n)= uint64(ammount_peaks(:,n));
-sort_data(:,n)= sort(abs(Data_02(:,n)),'desc');                               %sort the data so the top ammount of peaks are listed at the top of the table
-high_peaks{n}(:,:)= sort_data(1:amount_peaks(:,n),n);                         %only take the highest peaks to analyse
-mean_high_peaks(:,n)= mean(high_peaks{n}(:,:));                               %calcultate the mean of the highest peaks
+sort_data(:,n)= sort(abs(Data_02(:,n)),'desc');                              %sort the data so the top ammount of peaks are listed at the top of the table
+high_peaks{n}(:,:)= sort_data(1:amount_peaks(:,n),n);                      %only take the highest peaks to analyse
+mean_high_peaks(:,n)= mean(high_peaks{n}(:,:));                             %calcultate the mean of the highest peaks
 
 Intensities_exp2(:,n) = (mean_high_peaks(:,n).*104./10); %.*10e-3
 
@@ -67,17 +67,17 @@ Measuring_Time = 1;
 Length_Signal = Sampling_Rate * Measuring_Time;
 n=1;
 for i=2:2:size(Voltage_exp3,2)
-Data_raw2(:,n) = [Voltage_exp3(:,i)];                                         %only consider the non-sample columns and put it in a table
+Data_raw2(:,n) = [Voltage_exp3(:,i)];                                             %only consider the non-sample columns and put it in a table
 
-Mean(:,n)  = mean(Data_raw2(:,n));                                            %calculate mean of signal in order to compensate for translation on y-axis
+Mean(:,n)  = mean(Data_raw2(:,n));                                           %calculate mean of signal in order to compensate for translation on y-axis
 Data_02(:,n) = Data_raw2(:,n) - Mean(:,n);                                    %calculate the difference between mean and the data
 B2(:,n) = fft(Data_02(:,n));                                                  %FFT to determine how many points we need to consider for the maximum based on frequency of signal
-max_f(:,n)= max(abs(B2(:,n)));                                                %find the frecuency of the system at every voltage
-amount_peaks(:,n)= uint64(max_f(:,n).*Sampling_Rate*10^-3*2);                 %calculate the integer of the ammount of peaks 
+max_f(:,n)= max(abs(B2(:,n)));                                               %find the frecuency of the system at every voltage
+amount_peaks(:,n)= uint64(max_f(:,n).*Sampling_Rate*10^-3*2);              %calculate the integer of the ammount of peaks 
 %integer_peaks(:,n)= uint64(ammount_peaks(:,n));
-sort_data(:,n)= sort(abs(Data_02(:,n)),'desc');                               %sort the data so the top ammount of peaks are listed at the top of the table
-high_peaks{n}(:,:)= sort_data(1:amount_peaks(:,n),n);                         %only take the highest peaks to analyse
-mean_high_peaks(:,n)= mean(high_peaks{n}(:,:));                               %calcultate the mean of the highest peaks
+sort_data(:,n)= sort(abs(Data_02(:,n)),'desc');                              %sort the data so the top ammount of peaks are listed at the top of the table
+high_peaks{n}(:,:)= sort_data(1:amount_peaks(:,n),n);                      %only take the highest peaks to analyse
+mean_high_peaks(:,n)= mean(high_peaks{n}(:,:));                             %calcultate the mean of the highest peaks
 
 Intensities_exp3(:,n) = (mean_high_peaks(:,n).*104./10); %.*10e-3
 
@@ -96,15 +96,34 @@ disp("Data from model is successfully imported")
 %Intensities_mod = Intensities_mod2
 %% plot alles in een
 Voltage_plot = 3.0:0.5:24.0;
+steps = 349/2300;
+angular_velocity= [0:steps:349];
 figure(1)
-plot(Voltage_plot,Intensities_exp)
-hold on
+steps = 349/2300;
+angular_velocity= [0:steps:349];
+hAX=axes;                 % first axes, save handle
+pos=get(hAX,'position')   % get the position vector
+pos = [ 0.1300    0.1100    0.7750    0.8150];
+pos1=pos(2);              % save the original bottom position
+pos(2)=pos(2)+pos1; pos(4)=pos(4)-pos1;  % raise bottom/reduce height->same overall upper position
+set(hAX,'position',pos)   % and resize first axes
+pos(2)=pos1; pos(4)=0.01; % reset bottom to original and small height
 plot(Voltage_plot,Intensities_exp2)
+hold on
 plot(Voltage_plot,Intensities_exp3)
 plot(Voltage_plot,Intensities_mod(:,2))
-ylabel('Mean amplitude [mm]')
-xlabel('Voltage[V]')
+plot(Voltage_plot,Intensities_exp)
 legend("experiment 1","experiment 2","experiment 3","matlab model") 
+title('Amplitude results' )
+
+hAX(2)=axes('position',pos,'color','none');
+
+plot(angular_velocity, 0)
+ylabel(hAX(1),'Displacement of system [mm]')
+xlabel(hAX(1),'Supplied voltage [V]')
+xlabel(hAX(2),'Angular velocity [rad/s]')
+set(hAX(2),'xcolor','r','ycolor','r')
+
 
 %% plot verschil tussen experiments en 
 n = 30;
@@ -120,13 +139,29 @@ for i=1:1:43
     n = n+5;
 end
 figure(2)
+steps = 349/2300;
+angular_velocity= [0:steps:349];
+hAX=axes;                 % first axes, save handle
+pos=get(hAX,'position')   % get the position vector
+pos = [ 0.1300    0.1100    0.7750    0.8150];
+pos1=pos(2);              % save the original bottom position
+pos(2)=pos(2)+pos1; pos(4)=pos(4)-pos1;  % raise bottom/reduce height->same overall upper position
+set(hAX,'position',pos)   % and resize first axes
+pos(2)=pos1; pos(4)=0.01; % reset bottom to original and small height
 plot(Voltage_plot,difference1)
 hold on
 plot(Voltage_plot,difference2)
 plot(Voltage_plot,difference3)
-ylabel('Difference between in [mm]')
-xlabel('Voltage[V]')
 legend("experiment 1","experiment 2","experiment 3") 
+title('Mean difference amplitude' )
+
+hAX(2)=axes('position',pos,'color','none');
+
+plot(angular_velocity, 0)
+ylabel(hAX(1),'Difference between in [mm]')
+xlabel(hAX(1),'Supplied voltage [V]')
+xlabel(hAX(2),'Angular velocity [rad/s]')
+set(hAX(2),'xcolor','r','ycolor','r')
 
 %% %error = (accepted - model)/ accepted * 100
 clear errors
@@ -143,14 +178,31 @@ for i = 1:1:43;
 end
 
 figure(3)
+
+steps = 349/2300;
+angular_velocity= [0:steps:349];
+hAX=axes;                 % first axes, save handle
+pos=get(hAX,'position')   % get the position vector
+pos = [ 0.1300    0.1100    0.7750    0.8150];
+pos1=pos(2);              % save the original bottom position
+pos(2)=pos(2)+pos1; pos(4)=pos(4)-pos1;  % raise bottom/reduce height->same overall upper position
+set(hAX,'position',pos)   % and resize first axes
+pos(2)=pos1; pos(4)=0.01; % reset bottom to original and small height
 plot(Voltage_plot,error_total1)
 hold on
 plot(Voltage_plot,error_total2)
 plot(Voltage_plot,error_total3)
-ylabel('Error [%]')
-xlabel('Voltage[V]')
 legend("experiment 1","experiment 2","experiment 3") 
+title('Error margin' )
 
+hAX(2)=axes('position',pos,'color','none');
+
+plot(angular_velocity, 0)
+ylabel(hAX(1),'Error [%]')
+xlabel(hAX(1),'Supplied voltage [V]')
+xlabel(hAX(2),'Angular velocity [rad/s]')
+set(hAX(2),'xcolor','r','ycolor','r')
+%%
 mean_error1 = mean(error_total1);
 mean_error2 = mean(error_total2);
 mean_error3 = mean(error_total3);
